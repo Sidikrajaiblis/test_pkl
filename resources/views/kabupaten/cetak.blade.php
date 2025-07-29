@@ -1,65 +1,33 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Laporan Data Kabupaten</title>
+    <meta charset="utf-8">
+    <title>Laporan Kabupaten</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        th, td {
-            padding: 6px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        .text-center {
-            text-align: center;
-        }
+        body { font-family: sans-serif; font-size: 12px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #000; padding: 6px; text-align: left; }
     </style>
 </head>
 <body>
-
-    <h2>Laporan Data Kabupaten</h2>
-
+    <h4>Laporan Data Kabupaten</h4>
     <table>
         <thead>
             <tr>
-                <th style="width: 5%;">No</th>
+                <th>No</th>
                 <th>Nama Kabupaten</th>
-                <th>Tanggal Dibuat</th>
+                <th>Jumlah Kecamatan</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($data as $i => $kab)
+            @foreach ($data as $i => $d)
             <tr>
-                <td class="text-center">{{ $i + 1 }}</td>
-                <td>{{ $kab->nama_kabupaten }}</td>
-                <td>{{ \Carbon\Carbon::parse($kab->created_at)->format('d/m/Y') }}</td>
+                <td>{{ $i + 1 }}</td>
+                <td>{{ $d->nama_kabupaten }}</td>
+                <td>{{ $d->kecamatan_count }}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
-
 </body>
 </html>

@@ -18,7 +18,7 @@
     </form>
 
     <a href="{{ route('kecamatan.create') }}" class="btn btn-success">+ Tambah Kecamatan</a>
-    <a href="{{ route('kecamatan.cetak') }}" class="btn btn-outline-secondary">Cetak PDF</a>
+    <a href="{{ route('kecamatan.cetak', ['search' => request('search'), 'kabupaten_id' => request('kabupaten_id')]) }}" class="btn btn-outline-secondary">Cetak PDF</a>
 
     {{-- Tabel --}}
     <table class="table table-bordered">

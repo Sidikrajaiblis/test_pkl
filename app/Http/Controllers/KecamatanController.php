@@ -81,10 +81,17 @@ class KecamatanController extends Controller
         return redirect()->route('kecamatan.index')->with('success', 'Data berhasil dihapus.');
     }
 
-    public function cetak()
+    public function cetak(Request $request)
     {
-        $data = Kecamatan::all();
+        $search = $request->query('search');
+        $kabupatenId = $request->query('kabupaten_id');
+
+        $data = Kecamatan::with('kabupaten')
+            ->when($kabupatenId, fn($q) => $q->where('id_kabupaten', $kabupatenId))
+            ->when($search, fn($q) => $q->where('nama_kecamatan', 'like', "%$search%"))
+            ->get();
+
         $pdf = Pdf::loadView('kecamatan.cetak', compact('data'));
-        return $pdf->download('laporan_kabupaten.pdf');
+        return $pdf->download('laporan_kecamatan.pdf');
     }
 }

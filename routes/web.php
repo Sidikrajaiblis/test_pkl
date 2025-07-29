@@ -16,6 +16,7 @@ Route::get('/kabupaten-cetak', [KabupatenController::class, 'cetak'])->name('kab
 
 Route::resource('/kecamatan', KecamatanController::class);
 Route::get('/kecamatan-cetak', [kecamatanController::class, 'cetak'])->name('kecamatan.cetak');
+Route::get('/wilayah/cetak', [WilayahController::class, 'cetak'])->name('wilayah.cetak');
 
 Route::get('/wilayah', [wilayahController::class, 'index'])->name('wilayah.index');
 // Route::post('/wilayah/kabupaten', [wilayahController::class, 'storeKabupaten'])->name('kabupaten.store');

@@ -1,67 +1,34 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Laporan Data Kecamatan</title>
+    <meta charset="utf-8">
+    <title>Laporan Kecamatan</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        th, td {
-            padding: 6px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        .text-center {
-            text-align: center;
-        }
+        body { font-family: sans-serif; font-size: 12px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #000; padding: 6px; text-align: left; }
     </style>
 </head>
 <body>
-
-    <h2>Laporan Data Kecamatan</h2>
+    <h4>Laporan Data Kecamatan</h4>
 
     <table>
         <thead>
             <tr>
-                <th style="width: 5%;">No</th>
+                <th>No</th>
+                <th>Nama Kabupaten</th>
                 <th>Nama Kecamatan</th>
-                <th>id Kabupaten</th>
-                <th>Tanggal Dibuat</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($data as $i => $kec)
+            @foreach ($data as $i => $kc)
             <tr>
-                <td class="text-center">{{ $i + 1 }}</td>
-                <td>{{ $kec->nama_kecamatan }}</td>
-                <td>{{ $kec->id_kabupaten }}</td>
-                <td>{{ \Carbon\Carbon::parse($kec->created_at)->format('d/m/Y') }}</td>
+                <td>{{ $i + 1 }}</td>
+                <td>{{ $kc->kabupaten->nama_kabupaten }}</td>
+                <td>{{ $kc->nama_kecamatan }}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
-
 </body>
 </html>

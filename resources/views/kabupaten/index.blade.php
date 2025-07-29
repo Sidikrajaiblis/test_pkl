@@ -15,7 +15,7 @@
     {{-- Button Tambah & Cetak --}}
     <div class="mb-3">
         <a href="{{ route('kabupaten.create') }}" class="btn btn-success">+ Tambah Kabupaten</a>
-        <a href="{{ route('kabupaten.cetak') }}" class="btn btn-outline-secondary">Cetak PDF</a>
+        <a href="{{ route('kabupaten.cetak') }}?search={{ request('search') }}" class="btn btn-outline-secondary">Cetak PDF</a>
     </div>
     @if(session('success'))
     <div class="alert alert-success mt-3">
